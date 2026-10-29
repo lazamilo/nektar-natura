@@ -540,8 +540,6 @@
   }
   renderNext(false);
   onLang.push(() => renderNext(false));
-  $('.js-pprev').addEventListener('click', () => goPillar(pi - 1));
-  $('.js-pnext').addEventListener('click', () => goPillar(pi + 1));
 
   // Desktop: the section pins and scrolling walks through the pillars
   mm.add('(min-width: 821px)', () => {
@@ -560,7 +558,7 @@
     return () => { pScrollTo = null; };
   });
 
-  // Mobile: arrows, swipe and autoplay
+  // Mobile: swipe and autoplay
   mm.add('(max-width: 820px)', () => {
     let timer;
     const stage = $('.pillars__stage');
