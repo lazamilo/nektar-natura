@@ -292,7 +292,10 @@ em { font-style: normal; }
 }
 .feature__img { position: relative; aspect-ratio: 1; max-height: max(320px, calc(100svh - 420px)); width: 100%; display: grid; place-items: center; }
 .feature__img img { position: absolute; inset: -9% 0; width: 100%; height: 118%; object-fit: contain; filter: drop-shadow(0 40px 40px rgba(15,42,35,.28)); transition: transform 1.2s var(--ease); }
-@media (min-width: 821px) { .feature__img { aspect-ratio: auto; max-height: none; min-height: 320px; align-self: stretch; } }
+@media (min-width: 821px) {
+  .systems__feature { min-height: clamp(520px, calc(100svh - 240px), 860px); }
+  .feature__img { aspect-ratio: auto; max-height: none; min-height: 320px; align-self: stretch; }
+}
 .systems__feature:hover .feature__img img { transform: scale(1.04); }
 .feature__title { font-family: var(--display); font-weight: 500; font-size: clamp(56px, 6vw, 104px); line-height: .88; margin: 0 0 32px; letter-spacing: -.05em; }
 .feature__body > p { max-width: 460px; }
