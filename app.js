@@ -420,11 +420,12 @@
   else {
     gsap.set(loader, { clipPath: 'inset(0 0 0% 0)' });
     gsap.from('.loader__word > *', { yPercent: 110, duration: 1, stagger: .08, ease: 'expo.out' });
+    const liquid = $('.js-liquid');
     const counter = { v: 0 }; let loaded = false, counted = false, finished = false;
     const tryFinish = () => { if (loaded && counted && !finished) { finished = true; finishLoad(); } };
     gsap.to(counter, {
       v: 100, duration: 1.8, ease: 'power2.inOut',
-      onUpdate: () => { $('.js-count').textContent = Math.round(counter.v); $('.loader__fill').style.height = counter.v + '%'; },
+      onUpdate: () => { $('.js-count').textContent = Math.round(counter.v); liquid.setAttribute('transform', `translate(0 ${106 - counter.v * .92})`); },   // full stops just under the rim
       onComplete: () => { counted = true; tryFinish(); }
     });
     const heroImg = $('.hero__media img');
