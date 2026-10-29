@@ -239,6 +239,24 @@
   }));
   $('.js-add-drink').addEventListener('click', () => addItem({ id: 'drink-' + currentCat, type: 'drink' }));
 
+  /* ---------------- Venues: expanding panels ---------------- */
+  const vPanels = $$('.vpanel');
+  const openVenue = p => vPanels.forEach(x => x.classList.toggle('is-active', x === p));
+  vPanels.forEach(p => {
+    p.addEventListener('click', () => openVenue(p));
+    p.addEventListener('keydown', e => { if (e.target === p && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openVenue(p); } });
+    if (finePointer) p.addEventListener('mouseenter', () => openVenue(p));
+  });
+  // "Show systems": jump to the list, filtered to this venue
+  $$('.js-venue-filter').forEach(b => b.addEventListener('click', e => {
+    e.stopPropagation();
+    const chip = $(`.filters .chip[data-filter="${b.dataset.filter}"]`);
+    chip && chip.click();
+    const el = $('#sistemi');
+    lenis ? lenis.scrollTo(el, { duration: 1.6 }) : el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+  }));
+  $$('.vtag').forEach(t => t.addEventListener('click', e => e.stopPropagation()));
+
   /* ---------------- Form ---------------- */
   const form = $('.js-form');
   const guests = $('#f-guests'), guestsOut = $('.js-guests-out');
@@ -644,14 +662,12 @@
     start: 'top 92%', once: true,
     onEnter: els => gsap.from(els, { y: 50, opacity: 0, duration: 1, stagger: .07, ease: 'expo.out', clearProps: 'transform,opacity' })
   });
-  ScrollTrigger.batch('.support__item, .tcard, .eco-card, .eco-lead, .ncard, .stat, .venue, .systems__feature, .field, .contact__direct a', {
+  ScrollTrigger.batch('.support__item, .tcard, .eco-card, .eco-lead, .ncard, .stat, .vpanel, .systems__feature, .field, .contact__direct a', {
     start: 'top 92%', once: true,
     onEnter: els => gsap.from(els, { y: 50, opacity: 0, duration: 1, stagger: .07, ease: 'expo.out' })
   });
 
   /* ---------------- Parallax media ---------------- */
-  $$('.venue__img img').forEach(img => gsap.fromTo(img, { yPercent: -10 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
-  $$('.venue__img').forEach(el => gsap.from(el, { clipPath: 'inset(18% 10% 18% 10% round 22px)', duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%' } }));
   gsap.fromTo('.eco-media img', { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.eco-media', start: 'top bottom', end: 'bottom top', scrub: true } });
   gsap.from('.eco-media', { clipPath: 'inset(16% 12% 16% 12% round 28px)', duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.eco-media', start: 'top 85%' } });
   gsap.from('.drinks__visual', { y: 90, scale: .92, ease: 'none', scrollTrigger: { trigger: '.drinks', start: 'top bottom', end: 'top top', scrub: true } });

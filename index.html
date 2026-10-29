@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=42">
+  <link rel="stylesheet" href="styles.css?v=43">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23183C33'/%3E%3Cpath d='M9 23c0-8 6-14 14-14-1 8-6 14-14 14z' fill='%23CDF789'/%3E%3C/svg%3E">
 </head>
 <body class="is-loading">
@@ -240,19 +240,51 @@
         <p class="eyebrow" data-i18n="venues.eyebrow">Kjer točimo</p>
         <h2 class="display" data-i18n="venues.title">Od zajtrka v hotelu<br>do <em>sončnega zahoda na morju.</em></h2>
       </div>
-      <div class="venues__grid">
-        <figure class="venue venue--tall">
-          <div class="venue__img"><img src="assets/hotel.jpg" alt="" loading="lazy"></div>
-          <figcaption data-i18n="venues.hotel"><span>Hotel</span> Zajtrk, ki teče sam od sebe.</figcaption>
-        </figure>
-        <figure class="venue">
-          <div class="venue__img"><img src="assets/cruise.jpg" alt="" loading="lazy"></div>
-          <figcaption data-i18n="venues.cruise"><span>Križarka</span> Rešitve za nove vode.</figcaption>
-        </figure>
-        <figure class="venue">
-          <div class="venue__img"><img src="assets/bar.jpg" alt="" loading="lazy"></div>
-          <figcaption data-i18n="venues.bar"><span>Restavracija &amp; igralnica</span> Hitro, dosledno, ponoči in podnevi.</figcaption>
-        </figure>
+      <div class="vacc js-vacc">
+        <article class="vpanel is-active" tabindex="0">
+          <img src="assets/hotel.jpg" alt="" loading="lazy">
+          <span class="vpanel__tab"><b>01</b><span data-i18n="venue.hotel">Hotel</span></span>
+          <div class="vpanel__body">
+            <span class="vpanel__label" data-i18n="venue.hotel">Hotel</span>
+            <h3 data-i18n="vn1.t">Zajtrk, ki teče sam od sebe.</h3>
+            <p data-i18n="vn1.d">Sveži sokovi in pijače za zajtrk, bazen in bar — brez čakanja, tudi ob največji gneči.</p>
+            <div class="vpanel__tags"><button class="vtag js-open-system" data-id="iq-tap">IQ Tap</button><button class="vtag js-open-system" data-id="jm-superior">JM Superior</button><button class="vtag js-open-system" data-id="autofill">Autofill</button><button class="vtag js-open-system" data-id="stojnica">Stojnica</button></div>
+            <button class="vcta js-venue-filter" data-filter="hotel"><span data-i18n="venues.cta">Pokaži sisteme</span><i aria-hidden="true">→</i></button>
+          </div>
+        </article>
+        <article class="vpanel" tabindex="0">
+          <img src="assets/cruise.jpg" alt="" loading="lazy">
+          <span class="vpanel__tab"><b>02</b><span data-i18n="venue.cruise">Križarka</span></span>
+          <div class="vpanel__body">
+            <span class="vpanel__label" data-i18n="venue.cruise">Križarka</span>
+            <h3 data-i18n="vn2.t">Rešitve za nove vode.</h3>
+            <p data-i18n="vn2.d">Kompaktni sistemi za omejen prostor na krovu in zaloga, ki zdrži do naslednjega pristanišča.</p>
+            <div class="vpanel__tags"><button class="vtag js-open-system" data-id="konzola">Konzola</button><button class="vtag js-open-system" data-id="tower-touch">Tower Touch</button><button class="vtag js-open-system" data-id="bar-gun">Bar Gun</button><button class="vtag js-open-system" data-id="ice">Ice</button></div>
+            <button class="vcta js-venue-filter" data-filter="cruise"><span data-i18n="venues.cta">Pokaži sisteme</span><i aria-hidden="true">→</i></button>
+          </div>
+        </article>
+        <article class="vpanel" tabindex="0">
+          <img src="assets/bar.jpg" alt="" loading="lazy">
+          <span class="vpanel__tab"><b>03</b><span data-i18n="venues.rc">Restavracija &amp; igralnica</span></span>
+          <div class="vpanel__body">
+            <span class="vpanel__label" data-i18n="venues.rc">Restavracija &amp; igralnica</span>
+            <h3 data-i18n="vn3.t">Hitro, dosledno, ponoči in podnevi.</h3>
+            <p data-i18n="vn3.d">Hitro točenje ob vsakem času, enak okus v vsakem kozarcu in stroški pod nadzorom.</p>
+            <div class="vpanel__tags"><button class="vtag js-open-system" data-id="iq-tap">IQ Tap</button><button class="vtag js-open-system" data-id="tower-simple">Tower Simple</button><button class="vtag js-open-system" data-id="bar-gun">Bar Gun</button><button class="vtag js-open-system" data-id="jm">JM</button></div>
+            <button class="vcta js-venue-filter" data-filter="restaurant"><span data-i18n="venues.cta">Pokaži sisteme</span><i aria-hidden="true">→</i></button>
+          </div>
+        </article>
+        <article class="vpanel" tabindex="0">
+          <img src="assets/lemonade.jpg" alt="" loading="lazy">
+          <span class="vpanel__tab"><b>04</b><span data-i18n="venue.event">Prireditve</span></span>
+          <div class="vpanel__body">
+            <span class="vpanel__label" data-i18n="venue.event">Prireditve</span>
+            <h3 data-i18n="vn4.t">Velika gneča, brez vrst.</h3>
+            <p data-i18n="vn4.d">Mobilne postaje, ki jih postavite v nekaj minutah in točijo ves dan.</p>
+            <div class="vpanel__tags"><button class="vtag js-open-system" data-id="stojnica">Stojnica</button><button class="vtag js-open-system" data-id="autofill">Autofill</button><button class="vtag js-open-system" data-id="tower-simple">Tower Simple</button><button class="vtag js-open-system" data-id="iq-tap">IQ Tap</button></div>
+            <button class="vcta js-venue-filter" data-filter="event"><span data-i18n="venues.cta">Pokaži sisteme</span><i aria-hidden="true">→</i></button>
+          </div>
+        </article>
       </div>
       <div class="support">
         <div class="support__item"><b>24/7</b><span data-i18n="support.1">Tehnična podpora, ki vedno dvigne slušalko.</span></div>
@@ -467,7 +499,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="i18n.js?v=18"></script>
-  <script src="app.js?v=21"></script>
+  <script src="i18n.js?v=19"></script>
+  <script src="app.js?v=22"></script>
 </body>
 </html>
