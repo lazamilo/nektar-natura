@@ -425,7 +425,7 @@
     const tryFinish = () => { if (loaded && counted && !finished) { finished = true; finishLoad(); } };
     gsap.to(counter, {
       v: 100, duration: 1.8, ease: 'power2.inOut',
-      onUpdate: () => { $('.js-count').textContent = Math.round(counter.v); liquid.setAttribute('transform', `translate(0 ${106 - counter.v * .92})`); },   // full stops just under the rim
+      onUpdate: () => { $('.js-count').textContent = Math.round(counter.v); liquid.setAttribute('transform', `translate(0 ${106 - counter.v * .98})`); },   // full stops just under the rim
       onComplete: () => { counted = true; tryFinish(); }
     });
     const heroImg = $('.hero__media img');
