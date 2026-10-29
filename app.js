@@ -239,18 +239,6 @@
   }));
   $('.js-add-drink').addEventListener('click', () => addItem({ id: 'drink-' + currentCat, type: 'drink' }));
 
-  /* ---------------- Quotes ---------------- */
-  const quotes = $$('.quote'); let qi = 0, qTimer;
-  function showQuote(i) {
-    qi = (i + quotes.length) % quotes.length;
-    quotes.forEach((q, k) => q.classList.toggle('is-active', k === qi));
-    $('.js-qidx').textContent = `${String(qi + 1).padStart(2, '0')} / ${String(quotes.length).padStart(2, '0')}`;
-    clearInterval(qTimer); qTimer = setInterval(() => showQuote(qi + 1), 7000);
-  }
-  $('.js-qprev').addEventListener('click', () => showQuote(qi - 1));
-  $('.js-qnext').addEventListener('click', () => showQuote(qi + 1));
-  showQuote(0);
-
   /* ---------------- Form ---------------- */
   const form = $('.js-form');
   const guests = $('#f-guests'), guestsOut = $('.js-guests-out');
@@ -557,7 +545,7 @@
     start: 'top 92%', once: true,
     onEnter: els => gsap.from(els, { y: 50, opacity: 0, duration: 1, stagger: .07, ease: 'expo.out', clearProps: 'transform,opacity' })
   });
-  ScrollTrigger.batch('.support__item, .eco-card, .eco-lead, .ncard, .stat, .venue, .systems__feature, .field, .contact__direct a', {
+  ScrollTrigger.batch('.support__item, .tcard, .eco-card, .eco-lead, .ncard, .stat, .venue, .systems__feature, .field, .contact__direct a', {
     start: 'top 92%', once: true,
     onEnter: els => gsap.from(els, { y: 50, opacity: 0, duration: 1, stagger: .07, ease: 'expo.out' })
   });

@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=33">
+  <link rel="stylesheet" href="styles.css?v=34">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23183C33'/%3E%3Cpath d='M9 23c0-8 6-14 14-14-1 8-6 14-14 14z' fill='%23CDF789'/%3E%3C/svg%3E">
 </head>
 <body class="is-loading">
@@ -264,29 +264,34 @@
 
     <!-- TESTIMONIALS -->
     <section class="quotes" data-i18n-attr="aria-label:quotes.aria">
-      <p class="eyebrow" data-i18n="quotes.eyebrow">Ne verjemite na slepo</p>
-      <div class="quotes__stage">
-        <blockquote class="quote is-active">
-          <p data-i18n="q1">»Enotnost okusa v vsakem kozarcu, hitra dostava naročil, močna tehnična podpora in dizajn, ki ustreza današnjim estetskim standardom.«</p>
-          <footer><b>Zeynel Karakuş</b> F&amp;B Manager, Radisson Blu Ottomare, Istanbul</footer>
-        </blockquote>
-        <blockquote class="quote">
-          <p data-i18n="q2">»Zmanjšali so čas, ki ga osebje porabi za polnjenje in upravljanje zalog, tako da se lahko osredotoči na pomembnejše naloge.«</p>
-          <footer><b>Ivan Pang</b> F&amp;B Manager, Novotel Milton Keynes</footer>
-        </blockquote>
-        <blockquote class="quote">
-          <p data-i18n="q3">»Uvedba Silver Premium Orange je bila pravi hit — odzivi gostov so bili izjemni.«</p>
-          <footer><b>Georgios Palonis</b> <span data-i18n="q3r">Vodja nabave</span>, Rodos Palace</footer>
-        </blockquote>
-        <blockquote class="quote">
-          <p data-i18n="q4">»Prihranimo skladiščno kapaciteto, stroške in čas osebja — in imamo zanesljivega partnerja s stabilnimi cenami.«</p>
-          <footer><b>Christoph Kunzmann</b> <span data-i18n="q4r">Generalni direktor</span>, H+ Hotel Bochum</footer>
-        </blockquote>
-      </div>
-      <div class="quotes__nav">
-        <button class="qbtn js-qprev" data-i18n-attr="aria-label:quotes.prev">←</button>
-        <span class="js-qidx">01 / 04</span>
-        <button class="qbtn js-qnext" data-i18n-attr="aria-label:quotes.next">→</button>
+      <header class="quotes__head">
+        <p class="eyebrow" data-i18n="quotes.eyebrow">Mnenja strank</p>
+        <h2 class="display" data-i18n="quotes.title">Ne verjemite <em>na slepo.</em></h2>
+        <p class="quotes__sub" data-i18n="quotes.sub">Kaj pravijo hotelirji in vodje F&amp;B, ki z nami točijo vsak dan.</p>
+      </header>
+      <div class="tgrid">
+        <figure class="tcard tcard--big">
+          <p class="tcard__hl" data-i18n="q1h">Enak okus v vsakem kozarcu.</p>
+          <span class="tcard__mark" aria-hidden="true">“</span>
+          <blockquote data-i18n="q1">»Enotnost okusa v vsakem kozarcu, hitra dostava naročil, močna tehnična podpora in dizajn, ki ustreza današnjim estetskim standardom.«</blockquote>
+          <figcaption><span class="tcard__av">ZK</span><span><b>Zeynel Karakuş</b><small>F&amp;B Manager, Radisson Blu Ottomare, Istanbul</small></span></figcaption>
+        </figure>
+        <figure class="tcard tcard--wide">
+          <p class="tcard__hl" data-i18n="q2h">Več časa za goste.</p>
+          <span class="tcard__mark" aria-hidden="true">“</span>
+          <blockquote data-i18n="q2">»Zmanjšali so čas, ki ga osebje porabi za polnjenje in upravljanje zalog, tako da se lahko osredotoči na pomembnejše naloge.«</blockquote>
+          <figcaption><span class="tcard__av">IP</span><span><b>Ivan Pang</b><small>F&amp;B Manager, Novotel Milton Keynes</small></span></figcaption>
+        </figure>
+        <figure class="tcard">
+          <span class="tcard__mark" aria-hidden="true">“</span>
+          <blockquote data-i18n="q3">»Uvedba Silver Premium Orange je bila pravi hit — odzivi gostov so bili izjemni.«</blockquote>
+          <figcaption><span class="tcard__av">GP</span><span><b>Georgios Palonis</b><small><span data-i18n="q3r">Vodja nabave</span>, Rodos Palace</small></span></figcaption>
+        </figure>
+        <figure class="tcard tcard--dark">
+          <span class="tcard__mark" aria-hidden="true">“</span>
+          <blockquote data-i18n="q4">»Prihranimo skladiščno kapaciteto, stroške in čas osebja — in imamo zanesljivega partnerja s stabilnimi cenami.«</blockquote>
+          <figcaption><span class="tcard__av">CK</span><span><b>Christoph Kunzmann</b><small><span data-i18n="q4r">Generalni direktor</span>, H+ Hotel Bochum</small></span></figcaption>
+        </figure>
       </div>
     </section>
 
@@ -463,7 +468,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="i18n.js?v=14"></script>
-  <script src="app.js?v=16"></script>
+  <script src="i18n.js?v=15"></script>
+  <script src="app.js?v=17"></script>
 </body>
 </html>

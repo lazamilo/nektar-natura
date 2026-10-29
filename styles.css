@@ -409,16 +409,32 @@ em { font-style: normal; }
 .support__item:hover b { color: var(--lime); }
 
 /* ---------- Quotes ---------- */
-.quotes { padding: clamp(100px, 16vh, 180px) var(--gutter); background: var(--sage); text-align: center; }
-.quotes__stage { display: grid; max-width: 1200px; margin: 0 auto; }
-.quote { grid-area: 1/1; margin: 0; opacity: 0; visibility: hidden; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease), visibility .8s; }
-.quote.is-active { opacity: 1; visibility: visible; transform: none; }
-.quote p { font-family: var(--display); font-weight: 500; font-size: clamp(28px, 3.6vw, 56px); line-height: 1.08; letter-spacing: -.035em; margin: 0 0 36px; }
-.quote footer { font-size: 15px; }
-.quote footer b { display: block; font-weight: 600; }
-.quotes__nav { display: flex; justify-content: center; align-items: center; gap: 22px; margin-top: 48px; font-family: var(--sans); font-weight: 700; font-size: 13px; }
-.qbtn { width: 54px; height: 54px; border-radius: 50%; border: 1px solid var(--ink); font-size: 18px; transition: background .3s, color .3s; }
-.qbtn:hover { background: var(--ink); color: var(--sage); }
+.quotes { padding: clamp(100px, 16vh, 180px) var(--gutter); background: var(--sage); }
+.quotes__head { text-align: center; max-width: 760px; margin: 0 auto clamp(40px, 6vh, 64px); }
+.quotes__head .display em { color: var(--moss); }
+.quotes__sub { margin: 18px 0 0; opacity: .75; }
+.tgrid { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 16px; max-width: 1240px; margin: 0 auto; }
+.tcard {
+  margin: 0; padding: clamp(24px, 2.4vw, 36px); border-radius: 28px; background: var(--cream); color: var(--forest);
+  display: flex; flex-direction: column; box-shadow: 0 24px 48px -32px rgba(15,42,35,.35);
+  transition: translate .6s var(--ease);   /* `translate`, so the GSAP reveal's transform stays free */
+}
+.tcard:hover { translate: 0 -6px; }
+.tcard--big { grid-row: span 2; }
+.tcard--wide { grid-column: span 2; }
+.tcard--dark { background: var(--forest); color: var(--cream); }
+.tcard__hl { font-family: var(--display); font-weight: 500; font-size: clamp(30px, 2.8vw, 44px); line-height: 1; letter-spacing: -.035em; margin: 0 0 28px; }
+.tcard--big .tcard__hl { font-size: clamp(40px, 4.4vw, 68px); max-width: 9ch; }
+.tcard__mark { font-family: var(--display); font-weight: 500; font-size: 56px; line-height: .6; height: 26px; color: var(--moss); margin-bottom: 14px; }
+.tcard--dark .tcard__mark { color: var(--lime); }
+.tcard blockquote { margin: 0 0 32px; font-size: 17px; line-height: 1.55; }
+.tcard--big blockquote { font-size: clamp(18px, 1.4vw, 21px); }
+.tcard figcaption { margin-top: auto; display: flex; align-items: center; gap: 12px; }
+.tcard figcaption b { display: block; font-weight: 600; font-size: 15px; }
+.tcard figcaption small { display: block; font-size: 13px; opacity: .65; }
+.tcard__av { width: 44px; height: 44px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--sage); color: var(--forest); font-weight: 700; font-size: 14px; letter-spacing: .02em; }
+.tcard--big .tcard__av { background: var(--lime); }
+.tcard--dark .tcard__av { background: var(--lime); }
 
 /* ---------- Sustain (bento) ---------- */
 .sustain { padding: clamp(100px, 16vh, 170px) var(--gutter); background: var(--paper); }
@@ -569,6 +585,8 @@ input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border: 0; bord
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1100px) {
+  .tgrid { grid-template-columns: 1fr 1fr; }
+  .tcard--big, .tcard--wide { grid-column: 1 / -1; grid-row: auto; }
   .eco-lead, .eco-cards { grid-column: 1 / -1; }
   .eco-media { grid-column: 1 / -1; grid-row: auto; min-height: 0; aspect-ratio: 16 / 9; }
   .nav__pill { display: none; }
@@ -584,6 +602,7 @@ input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border: 0; bord
   .dtab { font-size: 24px; } .dtab.is-active { transform: none; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 }
 @media (max-width: 820px) {
+  .tgrid { grid-template-columns: 1fr; }
   body { font-size: 16px; }
   .nav { padding-block: 14px; }
   .nav__basket { padding-left: 14px; font-size: 13px; }
