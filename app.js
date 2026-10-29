@@ -470,6 +470,7 @@
     pDigits.style.transform = `translateY(${-i}em)`;
     pSlides.forEach((s, k) => { s.classList.toggle('is-active', k === i); s.classList.toggle('is-prev', k === from); });
     pTexts.forEach((t, k) => t.classList.toggle('is-active', k === i));
+    renderNext(true);
     const inS = pSlides[i], outT = pTexts[from], inT = pTexts[i];
     if (reduced) { pSlides[from].classList.remove('is-prev'); return; }
     gsap.killTweensOf([inS, inS.firstElementChild, inT.children, outT.children]);
@@ -489,6 +490,22 @@
     showPillar(n, i > pi ? 1 : -1);
     pAuto && pAuto();
   }
+  // "Up next" cards: the following pillars, in order, built from the slides so they follow the language
+  const pNext = $('.js-pnextcards');
+  function renderNext(animate) {
+    pNext.innerHTML = '';
+    for (let n = 1; n < PN; n++) {
+      const k = (pi + n) % PN, t = pTexts[k];
+      const b = document.createElement('button');
+      b.className = 'pcard'; b.type = 'button';
+      b.innerHTML = `<img src="${pSlides[k].querySelector('img').getAttribute('src')}" alt=""><span class="pcard__label">${t.querySelector('.ptext__label').textContent}</span><span class="pcard__title">${t.querySelector('h3').textContent}</span>`;
+      b.addEventListener('click', () => goPillar(k > pi || pScrollTo ? k : k + PN));
+      pNext.appendChild(b);
+    }
+    if (animate && !reduced) gsap.from(pNext.children, { x: 80, opacity: 0, duration: .9, stagger: .07, ease: 'expo.out', delay: .25 });
+  }
+  renderNext(false);
+  onLang.push(() => renderNext(false));
   $('.js-pprev').addEventListener('click', () => goPillar(pi - 1));
   $('.js-pnext').addEventListener('click', () => goPillar(pi + 1));
 
