@@ -413,8 +413,7 @@
   const loader = $('.loader');
   const finishLoad = () => {
     gsap.timeline({ onComplete: () => { loader.remove(); document.body.classList.remove('is-loading'); ScrollTrigger.refresh(); } })
-      .to('.loader__word > *', { yPercent: -110, duration: .7, stagger: .06, ease: 'expo.in' })
-      .to(loader, { clipPath: 'inset(0 0 100% 0)', duration: 1, ease: 'expo.inOut' }, '-=.2')
+      .to(loader, { clipPath: 'inset(0 0 100% 0)', duration: 1, ease: 'expo.inOut' })   // the logo stays put; the screen lifts off it
       .add(() => intro.play(), '-=.6');
   };
   if (reduced) { loader.remove(); document.body.classList.remove('is-loading'); }
