@@ -568,7 +568,7 @@
   gsap.fromTo('.eco-media img', { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.eco-media', start: 'top bottom', end: 'bottom top', scrub: true } });
   gsap.from('.eco-media', { clipPath: 'inset(16% 12% 16% 12% round 28px)', duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.eco-media', start: 'top 85%' } });
   gsap.from('.drinks__visual', { y: 90, scale: .92, ease: 'none', scrollTrigger: { trigger: '.drinks', start: 'top bottom', end: 'top top', scrub: true } });
-  gsap.from('.feature__img img', { yPercent: 14, scale: .88, ease: 'none', scrollTrigger: { trigger: '.systems__feature', start: 'top bottom', end: 'center center', scrub: true } });
+  gsap.from('.feature__img img', { yPercent: 6, scale: .9, ease: 'none', scrollTrigger: { trigger: '.systems__feature', start: 'top bottom', end: 'center center', scrub: true } });
 
   /* ---------------- Counters ---------------- */
   $$('.js-counter').forEach(el => {
