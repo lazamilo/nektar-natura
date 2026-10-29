@@ -25,7 +25,14 @@
   }
   if (finePointer) {
     addEventListener('pointermove', e => { pointer.x = e.clientX; pointer.y = e.clientY; pointer.inside = true; hitTest(); }, { passive: true });
-    addEventListener('scroll', hitTest, { passive: true });
+    let lastScrollTest = 0;            // each test forces a layout read, so don't run it every scroll frame
+    let trailing = 0;
+    addEventListener('scroll', () => {
+      if (!pointer.inside) return;
+      const t = performance.now();
+      clearTimeout(trailing); trailing = setTimeout(hitTest, 120);   // and once more when scrolling settles
+      if (t - lastScrollTest > 100) { lastScrollTest = t; hitTest(); }
+    }, { passive: true });
     document.documentElement.addEventListener('mouseleave', () => { pointer.inside = false; hitTest(); });
     addEventListener('blur', () => { pointer.inside = false; hitTest(); });
   }
@@ -367,6 +374,7 @@
   /* ---------------- Without GSAP: show everything ---------------- */
   if (!hasGsap) { $('.loader').remove(); document.body.classList.remove('is-loading'); return; }
   gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });   // mobile toolbar show/hide must not re-measure (and jump) the pins
 
   /* ---------------- Cursor & magnetic ---------------- */
   if (finePointer && !reduced) {
@@ -435,14 +443,21 @@
   if (reduced) return;
 
   /* ---------------- Hero scroll ---------------- */
-  gsap.to('.hero__media img', { yPercent: 12, scale: 1.08, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.hero__media', { yPercent: 12, scale: 1.08, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
   gsap.to('.hero__inner', { yPercent: -18, opacity: .2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 
   /* ---------------- Nav state ---------------- */
   const nav = $('.nav');
+  let navY = 0, navRun = 0;          // distance travelled in the current direction
   ScrollTrigger.create({
-    start: 'top -120', end: 'max',
-    onUpdate: self => nav.classList.toggle('is-hidden', self.direction === 1 && self.scroll() > 600 && !document.body.classList.contains('menu-open'))
+    start: 0, end: 'max',
+    onUpdate: self => {
+      const y = self.scroll(), d = y - navY; navY = y;
+      navRun = Math.sign(d) === Math.sign(navRun) ? navRun + d : d;
+      if (y < 600 || document.body.classList.contains('menu-open')) nav.classList.remove('is-hidden');
+      else if (navRun > 40) nav.classList.add('is-hidden');
+      else if (navRun < -40) nav.classList.remove('is-hidden');
+    }
   });
   $$('.manifesto, .systems, .drinks, .venues, .quotes, .news').forEach(sec => {
     ScrollTrigger.create({ trigger: sec, start: 'top 40', end: 'bottom 40', toggleClass: { targets: nav, className: 'is-light' } });
@@ -562,7 +577,7 @@
   // Desktop: the section pins and scrolling walks through the pillars
   mm.add('(min-width: 821px)', () => {
     const st = ScrollTrigger.create({
-      trigger: '.pillars', start: 'top top', end: () => '+=' + innerHeight * (PN - 1), pin: true, invalidateOnRefresh: true,
+      trigger: '.pillars', start: 'top top', end: () => '+=' + innerHeight * (PN - 1), pin: true, anticipatePin: 1, invalidateOnRefresh: true,
       onUpdate: self => {
         gsap.set(pFill, { scaleX: Math.max(.03, self.progress) });
         const k = Math.min(PN - 1, Math.floor(self.progress * PN));
@@ -590,8 +605,9 @@
     const te = e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) goPillar(pi + (dx < 0 ? 1 : -1)); };
     stage.addEventListener('touchstart', ts, { passive: true });
     stage.addEventListener('touchend', te);
-    pAuto();
-    return () => { clearTimeout(timer); pAuto = null; stage.removeEventListener('touchstart', ts); stage.removeEventListener('touchend', te); };
+    const vis = ScrollTrigger.create({ trigger: '.pillars', start: 'top bottom', end: 'bottom top',
+      onToggle: self => self.isActive ? pAuto() : (clearTimeout(timer), gsap.killTweensOf(pFill)) });
+    return () => { vis.kill(); clearTimeout(timer); pAuto = null; stage.removeEventListener('touchstart', ts); stage.removeEventListener('touchend', te); };
   });
 
   /* ---------------- Drinks: pinned scroll showcase (desktop) ---------------- */
@@ -637,7 +653,7 @@
     const st = ScrollTrigger.create({
       trigger: drinksSec, start: 'top top',
       end: () => '+=' + innerHeight * (CATS.length - 1) * 1.15,
-      pin: true, scrub: .8, animation: tl, invalidateOnRefresh: true
+      pin: true, anticipatePin: 1, scrub: .8, animation: tl, invalidateOnRefresh: true
     });
 
     scrollToCat = i => {
@@ -671,7 +687,7 @@
   gsap.fromTo('.eco-media img', { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.eco-media', start: 'top bottom', end: 'bottom top', scrub: true } });
   gsap.from('.eco-media', { clipPath: 'inset(16% 12% 16% 12% round 28px)', duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.eco-media', start: 'top 85%' } });
   gsap.from('.drinks__visual', { y: 90, scale: .92, ease: 'none', scrollTrigger: { trigger: '.drinks', start: 'top bottom', end: 'top top', scrub: true } });
-  gsap.from('.feature__img img', { yPercent: 6, scale: .9, ease: 'none', scrollTrigger: { trigger: '.systems__feature', start: 'top bottom', end: 'center center', scrub: true } });
+  gsap.from('.feature__img', { yPercent: 6, scale: .9, ease: 'none', scrollTrigger: { trigger: '.systems__feature', start: 'top bottom', end: 'center center', scrub: true } });
 
   /* ---------------- Counters ---------------- */
   $$('.js-counter').forEach(el => {
@@ -685,4 +701,6 @@
   // Pins were created out of page order; let ScrollTrigger refresh them top-to-bottom
   ScrollTrigger.sort();
   addEventListener('load', () => { ScrollTrigger.sort(); ScrollTrigger.refresh(); });
+  // Web fonts change text heights; re-measure once they're in so pins start where they should
+  document.fonts && document.fonts.ready.then(() => ScrollTrigger.refresh());
 })();
