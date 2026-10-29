@@ -294,12 +294,12 @@ em { font-style: normal; }
 .feature__img img { position: absolute; inset: -9% 0; width: 100%; height: 118%; object-fit: contain; filter: drop-shadow(0 40px 40px rgba(15,42,35,.28)); transition: transform 1.2s var(--ease); }
 @media (min-width: 821px) { .feature__img { aspect-ratio: auto; max-height: none; min-height: 320px; align-self: stretch; } }
 .systems__feature:hover .feature__img img { transform: scale(1.04); }
-.feature__title { font-family: var(--display); font-weight: 500; font-size: clamp(56px, 6vw, 104px); line-height: .88; margin: 0 0 24px; letter-spacing: -.05em; }
+.feature__title { font-family: var(--display); font-weight: 500; font-size: clamp(56px, 6vw, 104px); line-height: .88; margin: 0 0 32px; letter-spacing: -.05em; }
 .feature__body > p { max-width: 460px; }
 .feature__body > p:not(.eyebrow) { margin: 0 0 32px; }
 .specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 24px 0; background: rgba(16,32,27,.15); border-block: 1px solid rgba(16,32,27,.15); }
 .specs div { background: var(--sage); padding: 16px 0; }
-.spec-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; padding: 0; }
+.spec-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; padding: 0; }
 .spec-tags > div { display: inline-flex; align-items: center; gap: 10px; padding: 5px 16px 5px 5px; border-radius: 999px; background: rgba(255,255,255,.5); border: 1px solid rgba(15,42,35,.1); transition: translate .5s var(--ease), background .3s; }
 .spec-tags > div:hover { translate: 0 -3px; background: rgba(255,255,255,.8); }
 .spec-tags__ic { width: 34px; height: 34px; border-radius: 50%; background: var(--forest); display: grid; place-items: center; flex: none; }
