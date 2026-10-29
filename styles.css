@@ -437,6 +437,14 @@ em { font-style: normal; }
 .eco-card--lime { background: var(--lime); }
 .eco-card--sage { background: var(--sage); }
 .eco-card--peach { background: #FFB25B; }
+@media (min-width: 1101px) {
+  .eco { height: min(820px, calc(100svh - 48px)); min-height: 600px; grid-template-rows: minmax(0, 1.55fr) minmax(0, 1fr); }
+  .eco-lead { min-height: 0; gap: 24px; padding: clamp(28px, min(4vw, 5.5vh), 56px); }
+  .eco-lead .display { font-size: clamp(40px, min(5.4vw, 8vh), 88px); }
+  .eco-media { min-height: 0; }
+  .eco-card { min-height: 0; gap: 16px; padding: 24px; }
+  .eco-card b { font-size: clamp(48px, min(6vw, 9.5vh), 104px); }
+}
 
 /* ---------- News ---------- */
 .news { padding: clamp(100px, 16vh, 170px) var(--gutter); }
