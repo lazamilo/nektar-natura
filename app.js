@@ -393,7 +393,7 @@
   intro
     .from('.hero__media img', { scale: 1.35, duration: 2.2, ease: 'expo.out' }, 0)
     .from(heroLines, { yPercent: 115, rotate: 3, duration: 1.4, stagger: .08, ease: 'expo.out' }, .15)
-    .from(['.hero__lead', '.hero__ctas .btn', '.hero__scroll'], { opacity: 0, y: 30, duration: 1, stagger: .08, ease: 'expo.out' }, .6)
+    .from(['.hero__lead', '.hero__ctas', '.hero__scroll'], { opacity: 0, y: 30, duration: 1, stagger: .08, ease: 'expo.out' }, .6)
     .from('.nav > *', { opacity: 0, y: -20, duration: 1, stagger: .08, ease: 'expo.out' }, .7);
 
   const loader = $('.loader');
