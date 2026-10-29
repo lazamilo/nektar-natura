@@ -270,8 +270,10 @@ em { font-style: normal; }
 .pslide { clip-path: inset(0 0 0 100%); z-index: 0; }
 .pslide.is-active { clip-path: inset(0); z-index: 1; }
 .pslide.is-prev { clip-path: inset(0); z-index: 0; }   /* stays under the incoming slide while it wipes in */
+.pgrow { position: absolute; z-index: 2; overflow: hidden; will-change: left, top, width, height; }
+.pgrow img { width: 100%; height: 100%; object-fit: cover; }
 .pslide img { width: 100%; height: 100%; object-fit: cover; transform-origin: 60% 50%; }
-.pslides::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+.pslides::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none;
   background: linear-gradient(90deg, rgba(10,24,20,.82) 0%, rgba(10,24,20,.5) 38%, rgba(10,24,20,0) 70%), linear-gradient(to top, rgba(10,24,20,.75) 0%, rgba(10,24,20,0) 34%), linear-gradient(to bottom, rgba(10,24,20,.7) 0%, rgba(10,24,20,0) 34%); }
 .pillars__intro { position: absolute; z-index: 3; top: clamp(96px, 14vh, 130px); right: var(--gutter); text-align: right; }
 .pillars__intro .eyebrow { margin-bottom: 10px; }

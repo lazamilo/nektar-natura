@@ -464,25 +464,56 @@
   const pSlides = $$('.pslide'), pTexts = $$('.ptext'), pDigits = $('.js-pdigits'), pFill = $('.js-pfill');
   const PN = pSlides.length;
   let pi = 0, pScrollTo = null, pAuto = null;
+  // Nova-style change: the incoming pillar's "up next" card grows out of the row to fill the screen,
+  // the remaining cards slide along, and the text and counter swap through a blur.
+  // Without a visible card (going back, or on narrow screens) the new photo wipes in instead.
+  let pFinish = null;                // completes the running transition at once, so fast scrolling never stacks them
   function showPillar(i, dir) {
     if (i === pi) return;
+    pFinish && pFinish();
     const from = pi; pi = i;
+    const stage = $('.pillars__stage'), inS = pSlides[i], outT = pTexts[from], inT = pTexts[i];
+    const card = [...pNext.children].find(c => +c.dataset.k === i);
+    const cr = card && card.getBoundingClientRect(), sr = stage.getBoundingClientRect();
+    const grow = !reduced && dir > 0 && cr && cr.width > 0;
+
     pDigits.style.transform = `translateY(${-i}em)`;
-    pSlides.forEach((s, k) => { s.classList.toggle('is-active', k === i); s.classList.toggle('is-prev', k === from); });
     pTexts.forEach((t, k) => t.classList.toggle('is-active', k === i));
-    renderNext(true);
-    const inS = pSlides[i], outT = pTexts[from], inT = pTexts[i];
-    if (reduced) { pSlides[from].classList.remove('is-prev'); return; }
-    gsap.killTweensOf([inS, inS.firstElementChild, inT.children, outT.children]);
-    gsap.fromTo(inS, { clipPath: dir > 0 ? 'inset(0% 0% 0% 100%)' : 'inset(0% 100% 0% 0%)' }, {
-      clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'expo.inOut',
-      onComplete: () => { pSlides.forEach(s => s.classList.remove('is-prev')); gsap.set(inS, { clearProps: 'clipPath' }); }
-    });
-    gsap.fromTo(inS.firstElementChild, { scale: 1.25 }, { scale: 1, duration: 1.8, ease: 'expo.out' });
+    renderNext(!reduced);
+    const setSlides = () => pSlides.forEach((s, k) => { s.classList.toggle('is-active', k === i); s.classList.toggle('is-prev', false); });
+    if (reduced) return setSlides();
+
+    // text and counter: blur out, blur in
+    gsap.killTweensOf([inS, inS.firstElementChild, inT.children, outT.children, pDigits]);
     outT.classList.add('is-leaving');
-    gsap.to(outT.children, { y: -24, opacity: 0, duration: .35, stagger: .03, ease: 'power2.in',
-      onComplete: () => { outT.classList.remove('is-leaving'); gsap.set(outT.children, { clearProps: 'opacity,transform' }); } });
-    gsap.fromTo(inT.children, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: .07, ease: 'expo.out', delay: .3 });
+    gsap.to(outT.children, { y: -20, opacity: 0, filter: 'blur(10px)', duration: .4, stagger: .03, ease: 'power2.in',
+      onComplete: () => { outT.classList.remove('is-leaving'); gsap.set(outT.children, { clearProps: 'opacity,transform,filter' }); } });
+    gsap.fromTo(inT.children, { y: 30, opacity: 0, filter: 'blur(12px)' }, { y: 0, opacity: 1, filter: 'blur(0px)', duration: 1, stagger: .07, ease: 'expo.out', delay: .4 });
+    gsap.fromTo(pDigits, { filter: 'blur(10px)' }, { filter: 'blur(0px)', duration: .9, ease: 'power2.out' });
+
+    if (!grow) {
+      pSlides.forEach((s, k) => { s.classList.toggle('is-active', k === i); s.classList.toggle('is-prev', k === from); });
+      const tw = gsap.fromTo(inS, { clipPath: dir > 0 ? 'inset(0% 0% 0% 100%)' : 'inset(0% 100% 0% 0%)' }, {
+        clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'expo.inOut',
+        onComplete: () => { setSlides(); gsap.set(inS, { clearProps: 'clipPath' }); pFinish = null; }
+      });
+      gsap.fromTo(inS.firstElementChild, { scale: 1.25 }, { scale: 1, duration: 1.8, ease: 'expo.out' });
+      pFinish = () => tw.progress(1);
+      return;
+    }
+
+    // the card becomes the new background
+    const ghost = document.createElement('div');
+    ghost.className = 'pgrow';
+    ghost.innerHTML = `<img src="${inS.querySelector('img').getAttribute('src')}" alt="">`;
+    $('.pslides').appendChild(ghost);
+    gsap.set(ghost, { left: cr.left - sr.left, top: cr.top - sr.top, width: cr.width, height: cr.height, borderRadius: 22 });
+    const done = () => { setSlides(); ghost.remove(); pFinish = null; };
+    const tw = gsap.timeline({ onComplete: done })
+      .to(ghost, { left: 0, top: 0, width: sr.width, height: sr.height, borderRadius: 0, duration: 1.15, ease: 'expo.inOut' })
+      .to(ghost, { boxShadow: '0 30px 80px rgba(0,0,0,.4)', duration: .4, ease: 'power2.out' }, 0)
+      .fromTo(ghost.firstElementChild, { scale: 1.15 }, { scale: 1, duration: 1.15, ease: 'expo.inOut' }, 0);
+    pFinish = () => tw.progress(1);
   }
   function goPillar(i) {
     if (pScrollTo) return pScrollTo(Math.max(0, Math.min(PN - 1, i)));
@@ -497,12 +528,15 @@
     for (let n = 1; n < PN; n++) {
       const k = (pi + n) % PN, t = pTexts[k];
       const b = document.createElement('button');
-      b.className = 'pcard'; b.type = 'button';
+      b.className = 'pcard'; b.type = 'button'; b.dataset.k = k;
       b.innerHTML = `<img src="${pSlides[k].querySelector('img').getAttribute('src')}" alt=""><span class="pcard__label">${t.querySelector('.ptext__label').textContent}</span><span class="pcard__title">${t.querySelector('h3').textContent}</span>`;
       b.addEventListener('click', () => goPillar(k > pi || pScrollTo ? k : k + PN));
       pNext.appendChild(b);
     }
-    if (animate && !reduced) gsap.from(pNext.children, { x: 80, opacity: 0, duration: .9, stagger: .07, ease: 'expo.out', delay: .25 });
+    if (!animate) return;
+    const cs = [...pNext.children], slot = cs[0].offsetWidth + 12;
+    gsap.from(cs, { x: slot, duration: 1.05, ease: 'expo.inOut', stagger: .04 });
+    gsap.from(cs[cs.length - 1], { opacity: 0, duration: .6, delay: .55, ease: 'power2.out' });
   }
   renderNext(false);
   onLang.push(() => renderNext(false));
