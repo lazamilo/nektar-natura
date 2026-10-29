@@ -459,22 +459,72 @@
   buildManifesto();
   onLang.push(() => { buildManifesto(); ScrollTrigger.refresh(); });
 
-  /* ---------------- Horizontal pillars ---------------- */
+  /* ---------------- Pillars: full-bleed slider ---------------- */
   const mm = gsap.matchMedia();
+  const pSlides = $$('.pslide'), pTexts = $$('.ptext'), pDigits = $('.js-pdigits'), pFill = $('.js-pfill');
+  const PN = pSlides.length;
+  let pi = 0, pScrollTo = null, pAuto = null;
+  function showPillar(i, dir) {
+    if (i === pi) return;
+    const from = pi; pi = i;
+    pDigits.style.transform = `translateY(${-i}em)`;
+    pSlides.forEach((s, k) => { s.classList.toggle('is-active', k === i); s.classList.toggle('is-prev', k === from); });
+    pTexts.forEach((t, k) => t.classList.toggle('is-active', k === i));
+    const inS = pSlides[i], outT = pTexts[from], inT = pTexts[i];
+    if (reduced) { pSlides[from].classList.remove('is-prev'); return; }
+    gsap.killTweensOf([inS, inS.firstElementChild, inT.children, outT.children]);
+    gsap.fromTo(inS, { clipPath: dir > 0 ? 'inset(0% 0% 0% 100%)' : 'inset(0% 100% 0% 0%)' }, {
+      clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'expo.inOut',
+      onComplete: () => { pSlides.forEach(s => s.classList.remove('is-prev')); gsap.set(inS, { clearProps: 'clipPath' }); }
+    });
+    gsap.fromTo(inS.firstElementChild, { scale: 1.25 }, { scale: 1, duration: 1.8, ease: 'expo.out' });
+    outT.classList.add('is-leaving');
+    gsap.to(outT.children, { y: -24, opacity: 0, duration: .35, stagger: .03, ease: 'power2.in',
+      onComplete: () => { outT.classList.remove('is-leaving'); gsap.set(outT.children, { clearProps: 'opacity,transform' }); } });
+    gsap.fromTo(inT.children, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: .07, ease: 'expo.out', delay: .3 });
+  }
+  function goPillar(i) {
+    if (pScrollTo) return pScrollTo(Math.max(0, Math.min(PN - 1, i)));
+    const n = (i + PN) % PN;
+    showPillar(n, i > pi ? 1 : -1);
+    pAuto && pAuto();
+  }
+  $('.js-pprev').addEventListener('click', () => goPillar(pi - 1));
+  $('.js-pnext').addEventListener('click', () => goPillar(pi + 1));
+
+  // Desktop: the section pins and scrolling walks through the pillars
   mm.add('(min-width: 821px)', () => {
-    const track = $('.pillars__track');
-    const dist = () => track.scrollWidth - innerWidth;
-    const tween = gsap.to(track, {
-      x: () => -dist(), ease: 'none',
-      scrollTrigger: { trigger: '.pillars', start: 'top top', end: () => '+=' + dist(), pin: true, scrub: 1, invalidateOnRefresh: true }
+    const st = ScrollTrigger.create({
+      trigger: '.pillars', start: 'top top', end: () => '+=' + innerHeight * (PN - 1), pin: true, invalidateOnRefresh: true,
+      onUpdate: self => {
+        gsap.set(pFill, { scaleX: Math.max(.03, self.progress) });
+        const k = Math.min(PN - 1, Math.floor(self.progress * PN));
+        if (k !== pi) showPillar(k, k > pi ? 1 : -1);
+      }
     });
-    gsap.to('.pillars__progress span', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '.pillars', start: 'top top', end: () => '+=' + dist(), scrub: true } });
-    $$('.pillar__img img').forEach(img => {
-      gsap.fromTo(img, { xPercent: -16 }, { xPercent: 0, ease: 'none', scrollTrigger: { trigger: img.parentElement, containerAnimation: tween, start: 'left right', end: 'right left', scrub: true } });
-    });
-    $$('.pillar__body').forEach(b => {
-      gsap.from(b.children, { y: 40, opacity: 0, stagger: .06, ease: 'expo.out', duration: 1, scrollTrigger: { trigger: b, containerAnimation: tween, start: 'left 85%' } });
-    });
+    pScrollTo = i => {
+      const y = st.start + (st.end - st.start) * (i + .5) / PN;
+      lenis ? lenis.scrollTo(y, { duration: 1.4 }) : window.scrollTo({ top: y, behavior: 'smooth' });
+    };
+    return () => { pScrollTo = null; };
+  });
+
+  // Mobile: arrows, swipe and autoplay
+  mm.add('(max-width: 820px)', () => {
+    let timer;
+    const stage = $('.pillars__stage');
+    pAuto = () => {
+      clearTimeout(timer);
+      gsap.fromTo(pFill, { scaleX: pi / PN }, { scaleX: (pi + 1) / PN, duration: reduced ? 0 : 6, ease: 'none', overwrite: true });
+      timer = setTimeout(() => goPillar(pi + 1), 6000);
+    };
+    let x0 = null;
+    const ts = e => { x0 = e.touches[0].clientX; };
+    const te = e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) goPillar(pi + (dx < 0 ? 1 : -1)); };
+    stage.addEventListener('touchstart', ts, { passive: true });
+    stage.addEventListener('touchend', te);
+    pAuto();
+    return () => { clearTimeout(timer); pAuto = null; stage.removeEventListener('touchstart', ts); stage.removeEventListener('touchend', te); };
   });
 
   /* ---------------- Drinks: pinned scroll showcase (desktop) ---------------- */
