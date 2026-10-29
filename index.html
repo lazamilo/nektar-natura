@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nektar Natura — Pijače, ki tečejo 24/7</title>
+  <meta name="description" content="Celostne rešitve za točenje pijač za hotele, križarke, restavracije in igralnice. Točilni sistemi, več kot 200 okusov, servis 24/7. Od leta 1995.">
+  <meta name="theme-color" content="#0F2A23">
+  <link rel="alternate" hreflang="sl" href="?lang=sl">
+  <link rel="alternate" hreflang="en" href="?lang=en">
+  <link rel="alternate" hreflang="de" href="?lang=de">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=23">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23183C33'/%3E%3Cpath d='M9 23c0-8 6-14 14-14-1 8-6 14-14 14z' fill='%23CDF789'/%3E%3C/svg%3E">
+</head>
+<body class="is-loading">
+
+  <!-- Preloader -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__glass"><div class="loader__fill"></div></div>
+    <div class="loader__word"><img src="assets/logo-light.png" alt="" width="800" height="308"></div>
+    <div class="loader__count"><span class="js-count">0</span>%</div>
+  </div>
+
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="nav">
+    <a href="#top" class="nav__logo" aria-label="Nektar Natura">
+      <img class="nav__logo-light" src="assets/logo-light.png" alt="Nektar Natura" width="800" height="308">
+      <img class="nav__logo-dark" src="assets/logo-dark.png" alt="" width="800" height="308" aria-hidden="true">
+    </a>
+    <nav class="nav__pill" data-i18n-attr="aria-label:nav.aria">
+      <a href="#sistemi" data-i18n="nav.systems">Sistemi</a>
+      <a href="#pijace" data-i18n="nav.drinks">Pijače</a>
+      <a href="#servis" data-i18n="nav.service">Servis</a>
+      <a href="#trajnost" data-i18n="nav.sustain">Trajnost</a>
+      <a href="#zgodba" data-i18n="nav.about">O nas</a>
+    </nav>
+    <div class="nav__right">
+      <div class="nav__lang js-lang" role="group" data-i18n-attr="aria-label:nav.lang">
+        <button type="button" data-lang="sl" aria-pressed="true">SL</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="de" aria-pressed="false">DE</button>
+      </div>
+      <button class="nav__basket js-open-basket" type="button" data-i18n-attr="aria-label:nav.basketAria">
+        <span class="nav__basket-label" data-i18n="nav.basket">Povpraševanje</span><span class="nav__basket-short" data-i18n="basket.title">Izbor</span> <span class="badge js-basket-count">0</span>
+      </button>
+      <button class="nav__burger js-burger" type="button" data-i18n-attr="aria-label:nav.menu" aria-label="Meni" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="menu" aria-hidden="true">
+    <nav>
+      <a href="#sistemi" data-i="01" data-i18n="menu.systems">Točilni sistemi</a>
+      <a href="#pijace" data-i="02" data-i18n="nav.drinks">Pijače</a>
+      <a href="#servis" data-i="03" data-i18n="menu.service">Servis in podpora</a>
+      <a href="#trajnost" data-i="04" data-i18n="nav.sustain">Trajnost</a>
+      <a href="#zgodba" data-i="05" data-i18n="nav.about">O nas</a>
+      <a href="#kontakt" data-i="06" data-i18n="menu.contact">Kontakt</a>
+    </nav>
+    <div class="menu__foot">
+      <div class="menu__lang js-lang" role="group" data-i18n-attr="aria-label:nav.lang">
+        <button type="button" data-lang="sl" aria-pressed="true">Slovenščina</button><button type="button" data-lang="en" aria-pressed="false">English</button><button type="button" data-lang="de" aria-pressed="false">Deutsch</button>
+      </div>
+      <a href="tel:+38617240300">+386 1 7240 300</a>
+      <a href="mailto:hello@nektarnatura.com">hello@nektarnatura.com</a>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__media">
+        <img src="assets/hero.jpg" alt="Svež pomarančni sok teče iz pametne pipe v kristalni kozarec" data-i18n-attr="alt:hero.alt" fetchpriority="high">
+      </div>
+      <div class="hero__shade"></div>
+      <div class="hero__inner">
+        <h1 class="hero__title">
+          <span class="line" data-i18n="hero.l1"><span>Gostje</span> <em>zadovoljni.</em></span>
+          <span class="line" data-i18n="hero.l2"><span>Poslovanje</span> <em>nemoteno.</em></span>
+          <span class="line" data-i18n="hero.l3"><span>Pijače tečejo</span> <span class="hero__247">24/7</span></span>
+        </h1>
+        <div class="hero__foot">
+          <p class="hero__lead" data-i18n="hero.lead">Pametni točilni sistemi, več kot 200 okusov in tehnična podpora, ki ne spi. Za hotele, križarke, restavracije in igralnice v več kot 40 državah.</p>
+          <div class="hero__ctas">
+            <a href="#kontakt" class="btn btn--lime magnetic"><span data-i18n="hero.cta1">Zahtevajte ponudbo</span><i>→</i></a>
+            <a href="#sistemi" class="btn btn--ghost magnetic"><span data-i18n="hero.cta2">Raziščite sisteme</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true"><span data-i18n="hero.scroll">Drsite</span><i></i></div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto">
+      <p class="eyebrow" data-i18n="manifesto.eyebrow">Celostna rešitev</p>
+      <p class="manifesto__text js-words" data-i18n="manifesto.text">Upravljanje pijač <span class="pill"><img src="assets/thumbs/iqtap.jpg" alt=""></span> naj bo preprosto. Kakovost <span class="pill"><img src="assets/thumbs/fruit.jpg" alt=""></span> dosledna. Izpadi na minimumu. Vam pa ostane več časa za tisto, kar <span class="pill"><img src="assets/thumbs/granita.jpg" alt=""></span> šteje <em>nepozabne trenutke za vaše goste.</em></p>
+    </section>
+
+    <!-- PILLARS: horizontal pinned scroll -->
+    <section class="pillars" data-i18n-attr="aria-label:pillars.aria">
+      <div class="pillars__track">
+        <article class="pillar pillar--intro">
+          <p class="eyebrow" data-i18n="pillars.eyebrow">Kako to dosežemo</p>
+          <h2 class="display" data-i18n="pillars.title">Štirje stebri.<br><em>Ena rešitev.</em></h2>
+          <p class="pillar__hint" data-i18n="pillars.hint">Drsite naprej <i>→</i></p>
+        </article>
+        <article class="pillar">
+          <div class="pillar__img"><img src="assets/bar.jpg" alt="" loading="lazy"></div>
+          <div class="pillar__body">
+            <span class="pillar__n">01</span>
+            <h3 data-i18n="menu.systems">Točilni sistemi</h3>
+            <p data-i18n="p1.text">Napredni sistemi za živahna gostinska okolja. Nadzor nad stroški, manj odpadkov, dovršena pijača v vsakem kozarcu.</p>
+            <a href="#sistemi" class="link" data-i18n="p1.link">Sistemi <i>→</i></a>
+          </div>
+        </article>
+        <article class="pillar">
+          <div class="pillar__img"><img src="assets/fruit.jpg" alt="" loading="lazy"></div>
+          <div class="pillar__body">
+            <span class="pillar__n">02</span>
+            <h3 data-i18n="nav.drinks">Pijače</h3>
+            <p data-i18n="p2.text">Več kot 200 okusov — od 100-odstotnih sadnih sokov do limonad in koktajl baz. Svež okus, kot bi ga pravkar iztisnili.</p>
+            <a href="#pijace" class="link" data-i18n="p2.link">Okusi <i>→</i></a>
+          </div>
+        </article>
+        <article class="pillar">
+          <div class="pillar__img"><img src="assets/service.jpg" alt="" loading="lazy"></div>
+          <div class="pillar__body">
+            <span class="pillar__n">03</span>
+            <h3 data-i18n="menu.service">Servis in podpora</h3>
+            <p data-i18n="p3.text">Pozabite na izpade. Hitra podpora in redno vzdrževanje — 24 ur na dan, 7 dni v tednu.</p>
+            <a href="#servis" class="link" data-i18n="p3.link">Podpora <i>→</i></a>
+          </div>
+        </article>
+        <article class="pillar">
+          <div class="pillar__img"><img src="assets/orchard.jpg" alt="" loading="lazy"></div>
+          <div class="pillar__body">
+            <span class="pillar__n">04</span>
+            <h3 data-i18n="nav.sustain">Trajnost</h3>
+            <p data-i18n="p4.text">Manj embalaže, manj CO₂. Krožnost, digitalna preobrazba in odgovorne prakse na vsakem koraku.</p>
+            <a href="#trajnost" class="link" data-i18n="p4.link">Zaveze <i>→</i></a>
+          </div>
+        </article>
+      </div>
+      <div class="pillars__progress"><span></span></div>
+    </section>
+
+    <!-- SYSTEMS -->
+    <section class="systems" id="sistemi">
+      <div class="systems__head">
+        <div>
+          <p class="eyebrow" data-i18n="sys.eyebrow">Točilni sistemi · 10 modelov</p>
+          <h2 class="display" data-i18n="sys.title">Za vsak pult<br><em>pravi sistem.</em></h2>
+        </div>
+        <div class="filters" role="tablist" data-i18n-attr="aria-label:sys.filterAria">
+          <button class="chip is-active" data-filter="all" role="tab" aria-selected="true" data-i18n="sys.all">Vsi</button>
+          <button class="chip" data-filter="hotel" role="tab" aria-selected="false" data-i18n="venue.hotel">Hotel</button>
+          <button class="chip" data-filter="restaurant" role="tab" aria-selected="false" data-i18n="venue.restaurant">Restavracija</button>
+          <button class="chip" data-filter="cruise" role="tab" aria-selected="false" data-i18n="venue.cruise">Križarka</button>
+          <button class="chip" data-filter="casino" role="tab" aria-selected="false" data-i18n="venue.casino">Igralnica</button>
+          <button class="chip" data-filter="event" role="tab" aria-selected="false" data-i18n="venue.event">Prireditve</button>
+        </div>
+      </div>
+
+      <div class="systems__feature">
+        <div class="feature__img">
+          <img src="assets/iqtap-cutout.png" alt="IQ Tap" loading="lazy">
+        </div>
+        <div class="feature__body">
+          <p class="eyebrow" data-i18n="sys.featEyebrow">Novo · Nagrajeno</p>
+          <h3 class="feature__title">IQ Tap</h3>
+          <p data-i18n="sys.featText">Pametni točilni sistem, ki je prejel nagrado Red Dot 2026 za oblikovanje. Štiri gazirane in štiri negazirane pijače, voda in soda — iz ene elegantne pipe.</p>
+          <dl class="specs">
+            <div><dt data-i18n="spec.drinks">Pijače</dt><dd data-i18n="sys.featDrinks">4 + 4 + voda</dd></div>
+            <div><dt data-i18n="spec.cooling">Hlajenje</dt><dd>42 L/h</dd></div>
+            <div><dt data-i18n="spec.form">Postavitev</dt><dd data-i18n="form.counter">Na pult</dd></div>
+          </dl>
+          <div class="feature__ctas">
+            <button class="btn btn--lime magnetic js-add" data-id="iq-tap"><span data-i18n="btn.add">Dodaj v povpraševanje</span><i>+</i></button>
+            <button class="btn btn--line js-open-system" data-id="iq-tap"><span data-i18n="btn.specs">Specifikacije</span></button>
+          </div>
+        </div>
+      </div>
+
+      <ul class="syslist js-syslist" data-i18n-attr="aria-label:sys.listAria"></ul>
+      <div class="sysfloat" aria-hidden="true"><img alt=""></div>
+    </section>
+
+    <!-- DRINKS -->
+    <section class="drinks" id="pijace" data-theme="still">
+      <div class="drinks__bg"></div>
+      <div class="drinks__inner">
+        <div class="drinks__head">
+          <h2 class="display" data-i18n="drinks.title">Natočite <em>najboljše.</em></h2>
+        </div>
+        <div class="drinks__stage">
+          <div class="drinks__tabs" role="tablist" data-i18n-attr="aria-label:drinks.tabsAria">
+            <div class="drinks__rail" aria-hidden="true"><span></span></div>
+            <button class="dtab is-active" data-cat="still" role="tab" aria-selected="true"><span>01</span><b data-i18n="drinks.still">Negazirane</b></button>
+            <button class="dtab" data-cat="sparkling" role="tab" aria-selected="false"><span>02</span><b data-i18n="drinks.sparkling">Gazirane</b></button>
+            <button class="dtab" data-cat="cocktail" role="tab" aria-selected="false"><span>03</span><b data-i18n="drinks.cocktail">Koktajl baze</b></button>
+            <button class="dtab" data-cat="frozen" role="tab" aria-selected="false"><span>04</span><b data-i18n="drinks.frozen">Granite</b></button>
+          </div>
+          <div class="drinks__visual">
+            <div class="drinks__layer is-active" data-cat="still"><img src="assets/fruit.jpg" alt=""></div>
+            <div class="drinks__layer" data-cat="sparkling"><img src="assets/lemonade.jpg" alt=""></div>
+            <div class="drinks__layer" data-cat="cocktail"><img src="assets/cruise.jpg" alt=""></div>
+            <div class="drinks__layer" data-cat="frozen"><img src="assets/granita.jpg" alt=""></div>
+          </div>
+          <div class="drinks__info" aria-live="polite">
+            <h3 class="drinks__title js-dtitle"></h3>
+            <p class="js-ddesc"></p>
+            <ul class="flavors js-flavors"></ul>
+            <p class="drinks__compat js-dcompat"></p>
+            <button class="btn btn--dark magnetic js-add-drink"><span data-i18n="drinks.add">Dodaj kategorijo v povpraševanje</span><i>+</i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats" id="zgodba">
+      <p class="eyebrow" data-i18n="stats.eyebrow">Hvala, ker verjamete v našo globalno vizijo</p>
+      <div class="stats__grid">
+        <div class="stat"><b><span class="js-counter" data-to="40">0</span>k+</b><span data-i18n="stats.clients">strank</span></div>
+        <div class="stat"><b><span class="js-counter" data-to="30">0</span>+</b><span data-i18n="stats.years">let delovanja</span></div>
+        <div class="stat"><b><span class="js-counter" data-to="40">0</span>+</b><span data-i18n="stats.countries">držav</span></div>
+        <div class="stat"><b><span class="js-counter" data-to="50">0</span>k+</b><span data-i18n="stats.devices">nameščenih naprav</span></div>
+      </div>
+      <p class="stats__story" data-i18n="stats.story">Od preproste ideje leta 1995 do trideset let neprekinjenega razvoja. Družinske vrednote, slovenske korenine, globalni doseg — danes med <em>Ambasadorji slovenskega gospodarstva.</em></p>
+    </section>
+
+    <!-- VENUES -->
+    <section class="venues" id="servis">
+      <div class="venues__intro">
+        <p class="eyebrow" data-i18n="venues.eyebrow">Kjer točimo</p>
+        <h2 class="display" data-i18n="venues.title">Od zajtrka v hotelu<br>do <em>sončnega zahoda na morju.</em></h2>
+      </div>
+      <div class="venues__grid">
+        <figure class="venue venue--tall">
+          <div class="venue__img"><img src="assets/hotel.jpg" alt="" loading="lazy"></div>
+          <figcaption data-i18n="venues.hotel"><span>Hotel</span> Zajtrk, ki teče sam od sebe.</figcaption>
+        </figure>
+        <figure class="venue">
+          <div class="venue__img"><img src="assets/cruise.jpg" alt="" loading="lazy"></div>
+          <figcaption data-i18n="venues.cruise"><span>Križarka</span> Rešitve za nove vode.</figcaption>
+        </figure>
+        <figure class="venue">
+          <div class="venue__img"><img src="assets/bar.jpg" alt="" loading="lazy"></div>
+          <figcaption data-i18n="venues.bar"><span>Restavracija &amp; igralnica</span> Hitro, dosledno, ponoči in podnevi.</figcaption>
+        </figure>
+      </div>
+      <div class="support">
+        <div class="support__item"><b>24/7</b><span data-i18n="support.1">Tehnična podpora, ki vedno dvigne slušalko.</span></div>
+        <div class="support__item"><b data-i18n="support.2t">Pametni asistent</b><span data-i18n="support.2">Diagnostika in naročanje na dosegu klika.</span></div>
+        <div class="support__item"><b data-i18n="support.3t">Redno vzdrževanje</b><span data-i18n="support.3">Preventivni servis, da do izpadov sploh ne pride.</span></div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="quotes" data-i18n-attr="aria-label:quotes.aria">
+      <p class="eyebrow" data-i18n="quotes.eyebrow">Ne verjemite na slepo</p>
+      <div class="quotes__stage">
+        <blockquote class="quote is-active">
+          <p data-i18n="q1">»Enotnost okusa v vsakem kozarcu, hitra dostava naročil, močna tehnična podpora in dizajn, ki ustreza današnjim estetskim standardom.«</p>
+          <footer><b>Zeynel Karakuş</b> F&amp;B Manager, Radisson Blu Ottomare, Istanbul</footer>
+        </blockquote>
+        <blockquote class="quote">
+          <p data-i18n="q2">»Zmanjšali so čas, ki ga osebje porabi za polnjenje in upravljanje zalog, tako da se lahko osredotoči na pomembnejše naloge.«</p>
+          <footer><b>Ivan Pang</b> F&amp;B Manager, Novotel Milton Keynes</footer>
+        </blockquote>
+        <blockquote class="quote">
+          <p data-i18n="q3">»Uvedba Silver Premium Orange je bila pravi hit — odzivi gostov so bili izjemni.«</p>
+          <footer><b>Georgios Palonis</b> <span data-i18n="q3r">Vodja nabave</span>, Rodos Palace</footer>
+        </blockquote>
+        <blockquote class="quote">
+          <p data-i18n="q4">»Prihranimo skladiščno kapaciteto, stroške in čas osebja — in imamo zanesljivega partnerja s stabilnimi cenami.«</p>
+          <footer><b>Christoph Kunzmann</b> <span data-i18n="q4r">Generalni direktor</span>, H+ Hotel Bochum</footer>
+        </blockquote>
+      </div>
+      <div class="quotes__nav">
+        <button class="qbtn js-qprev" data-i18n-attr="aria-label:quotes.prev">←</button>
+        <span class="js-qidx">01 / 04</span>
+        <button class="qbtn js-qnext" data-i18n-attr="aria-label:quotes.next">→</button>
+      </div>
+    </section>
+
+    <!-- SUSTAINABILITY: bento -->
+    <section class="sustain" id="trajnost">
+      <div class="eco">
+        <div class="eco-lead">
+          <p class="eyebrow" data-i18n="sustain.eyebrow">Trajnost po vaši meri</p>
+          <h2 class="display" data-i18n="sustain.title">Manj embalaže.<br>Manj CO₂.<br><em>Več narave.</em></h2>
+          <div class="eco-lead__foot">
+            <p data-i18n="sustain.text">Naša strategija trajnostnega razvoja daje prednost krožnosti, digitalni preobrazbi in odgovornim praksam — za naprednejše in okolju prijaznejše rešitve.</p>
+            <a class="link" href="https://www.nektarnatura.com/sl/trajnost/" data-i18n="sustain.link" data-i18n-href="sustain">Naše zaveze <i>→</i></a>
+          </div>
+        </div>
+        <figure class="eco-media"><img src="assets/orchard.jpg" alt="" loading="lazy"></figure>
+        <div class="eco-cards">
+          <article class="eco-card eco-card--lime">
+            <b>B</b>
+            <div><h3 data-i18n="sustain.cdpT">CDP ocena</h3><p data-i18n="sustain.cdp">Potrditev naše trajnostne zaveze</p></div>
+          </article>
+          <article class="eco-card eco-card--sage">
+            <b>LCA</b>
+            <div><h3 data-i18n="sustain.lcaT">Življenjski cikel</h3><p data-i18n="sustain.lca">Nižji ogljični odtis za vsako postreženo pijačo</p></div>
+          </article>
+          <article class="eco-card eco-card--peach">
+            <b>IFS</b>
+            <div><h3 data-i18n="sustain.ifsT">IFS Progress</h3><p data-i18n="sustain.ifs">Certificiran standard varnosti hrane</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="news">
+      <div class="news__head">
+        <h2 class="display" data-i18n="news.title">Odkrijte <em>najnovejše</em></h2>
+        <a href="https://www.nektarnatura.com/sl/novice/" class="link" data-i18n="news.all" data-i18n-href="news">Vse novice <i>→</i></a>
+      </div>
+      <div class="news__grid">
+        <a class="ncard" href="https://www.nektarnatura.com/sl/novice/" data-i18n-href="news">
+          <div class="ncard__img"><img src="assets/iqtap.jpg" alt="" loading="lazy"></div>
+          <span class="ncard__meta" data-i18n="n1.meta">05. 06. 26 · Novosti</span>
+          <h3 data-i18n="n1.title">IQ Tap prejel nagrado Red Dot 2026 za dizajn izdelka</h3>
+        </a>
+        <a class="ncard" href="https://www.nektarnatura.com/sl/novice/" data-i18n-href="news">
+          <div class="ncard__img"><img src="assets/lemonade.jpg" alt="" loading="lazy"></div>
+          <span class="ncard__meta" data-i18n="n2.meta">19. 09. 25 · Novosti</span>
+          <h3 data-i18n="n2.title">Poletje v kozarcu: sveži okusi Lemonade</h3>
+        </a>
+        <a class="ncard" href="https://www.nektarnatura.com/sl/novice/" data-i18n-href="news">
+          <div class="ncard__img"><img src="assets/cruise.jpg" alt="" loading="lazy"></div>
+          <span class="ncard__meta" data-i18n="n3.meta">27. 06. 25 · Novosti</span>
+          <h3 data-i18n="n3.title">Plujemo v nove vode: inovativne rešitve za križarske linije</h3>
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTACT / INQUIRY -->
+    <section class="contact" id="kontakt">
+      <div class="contact__left">
+        <p class="eyebrow" data-i18n="nav.basket">Povpraševanje</p>
+        <h2 class="display" data-i18n="contact.title">Natočimo<br><em>skupaj?</em></h2>
+        <p data-i18n="contact.text">Povejte nam o svojem prostoru — v enem delovnem dnevu pripravimo predlog sistema, okusov in servisa po meri.</p>
+        <div class="contact__direct">
+          <a href="tel:+38617240300">+386 1 7240 300</a>
+          <a href="mailto:hello@nektarnatura.com">hello@nektarnatura.com</a>
+        </div>
+        <div class="picked">
+          <p class="eyebrow" data-i18n="contact.picked">Vaš izbor</p>
+          <ul class="picked__list js-picked"></ul>
+        </div>
+      </div>
+      <form class="form js-form" novalidate data-endpoint="">
+        <div class="field">
+          <input id="f-name" name="name" required autocomplete="name" placeholder=" ">
+          <label for="f-name" data-i18n="f.name">Ime in priimek *</label>
+        </div>
+        <div class="field">
+          <input id="f-company" name="company" required autocomplete="organization" placeholder=" ">
+          <label for="f-company" data-i18n="f.company">Podjetje / objekt *</label>
+        </div>
+        <div class="field field--half">
+          <input id="f-email" name="email" type="email" required autocomplete="email" placeholder=" ">
+          <label for="f-email" data-i18n="f.email">E-pošta *</label>
+        </div>
+        <div class="field field--half">
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder=" ">
+          <label for="f-phone" data-i18n="f.phone">Telefon</label>
+        </div>
+        <fieldset class="field field--chips">
+          <legend data-i18n="f.venue">Tip objekta</legend>
+          <label><input type="radio" name="venue" value="hotel" checked><span data-i18n="venue.hotel">Hotel</span></label>
+          <label><input type="radio" name="venue" value="restaurant"><span data-i18n="venue.restaurant">Restavracija</span></label>
+          <label><input type="radio" name="venue" value="cruise"><span data-i18n="venue.cruise">Križarka</span></label>
+          <label><input type="radio" name="venue" value="casino"><span data-i18n="venue.casino">Igralnica</span></label>
+          <label><input type="radio" name="venue" value="event"><span data-i18n="venue.event">Prireditve</span></label>
+        </fieldset>
+        <div class="field field--range">
+          <label for="f-guests"><span data-i18n="f.guests">Dnevno število gostov:</span> <output class="js-guests-out">250</output></label>
+          <input id="f-guests" name="guests" type="range" min="20" max="3000" step="10" value="250">
+        </div>
+        <div class="field">
+          <textarea id="f-msg" name="message" rows="3" placeholder=" "></textarea>
+          <label for="f-msg" data-i18n="f.message">Sporočilo</label>
+        </div>
+        <label class="consent"><input type="checkbox" name="consent" required><span data-i18n="f.consent">Strinjam se z obdelavo osebnih podatkov za namen priprave ponudbe. *</span></label>
+        <button class="btn btn--lime btn--wide magnetic" type="submit"><span class="js-submit-label" data-i18n="f.submit">Pošlji povpraševanje</span><i>→</i></button>
+        <p class="form__error" role="alert"></p>
+      </form>
+      <div class="form__done" hidden>
+        <div class="done__drop"></div>
+        <h3 class="display"><span data-i18n="done.thanks">Hvala,</span> <em class="js-done-name"></em></h3>
+        <p data-i18n="done.text">Vaše povpraševanje je pripravljeno. Naša ekipa vam odgovori v enem delovnem dnevu.</p>
+        <a class="btn btn--line js-mailto" href="#"><span data-i18n="done.mail">Pošlji tudi po e-pošti</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div>
+        <p class="eyebrow">Nektar Natura d.o.o.</p>
+        <p data-i18n="footer.tag">Od preproste ideje do 30 let razvoja.<br>Slovenija → svet.</p>
+      </div>
+      <nav data-i18n-attr="aria-label:footer.aria">
+        <a href="#sistemi" data-i18n="nav.systems">Sistemi</a><a href="#pijace" data-i18n="nav.drinks">Pijače</a><a href="#servis" data-i18n="nav.service">Servis</a><a href="#trajnost" data-i18n="nav.sustain">Trajnost</a>
+        <a href="https://www.nektarnatura.com/sl/careers/" data-i18n="footer.careers" data-i18n-href="careers">Kariera</a><a href="https://www.nektarnatura.com/sl/novice/" data-i18n="footer.news" data-i18n-href="news">Novice</a>
+      </nav>
+      <nav aria-label="Social">
+        <a href="https://www.instagram.com/nektarnatura/">Instagram</a>
+        <a href="https://www.linkedin.com/company/nektar-natura-group/">LinkedIn</a>
+        <a href="https://www.facebook.com/GroupNektarNatura">Facebook</a>
+        <a href="https://www.youtube.com/channel/UCnpm9GxkM8J5hxrI-qWfExg">YouTube</a>
+      </nav>
+    </div>
+    <div class="footer__word"><img src="assets/logo-light.png" alt="Nektar Natura" width="800" height="308" loading="lazy"></div>
+    <div class="footer__bottom">
+      <span>© 2026 Nektar Natura</span>
+      <a href="https://www.nektarnatura.com/sl/pravilnik-o-zasebnosti-in-piskotki/" data-i18n="footer.privacy" data-i18n-href="privacy">Zasebnost in piškotki</a>
+      <a href="#top" class="js-totop" data-i18n="footer.top">Na vrh ↑</a>
+    </div>
+  </footer>
+
+  <!-- System drawer -->
+  <aside class="drawer js-drawer" aria-hidden="true" aria-labelledby="drawer-title" role="dialog">
+    <div class="drawer__scrim js-close-drawer"></div>
+    <div class="drawer__panel">
+      <button class="drawer__close js-close-drawer" data-i18n-attr="aria-label:btn.close" aria-label="Zapri">✕</button>
+      <div class="drawer__img"><img alt=""></div>
+      <p class="eyebrow js-dr-type"></p>
+      <h3 id="drawer-title" class="drawer__title js-dr-title"></h3>
+      <p class="js-dr-desc"></p>
+      <dl class="specs specs--col js-dr-specs"></dl>
+      <div class="drawer__venues js-dr-venues"></div>
+      <button class="btn btn--lime btn--wide js-dr-add"><span data-i18n="btn.add">Dodaj v povpraševanje</span><i>+</i></button>
+    </div>
+  </aside>
+
+  <!-- Basket -->
+  <aside class="basket js-basket" aria-hidden="true" role="dialog" data-i18n-attr="aria-label:nav.basket">
+    <div class="drawer__scrim js-close-basket"></div>
+    <div class="basket__panel">
+      <button class="drawer__close js-close-basket" data-i18n-attr="aria-label:btn.close" aria-label="Zapri">✕</button>
+      <p class="eyebrow" data-i18n="basket.eyebrow">Vaše povpraševanje</p>
+      <h3 class="display" data-i18n="basket.title">Izbor</h3>
+      <ul class="basket__list js-basket-list"></ul>
+      <p class="basket__empty" data-i18n="basket.empty">Še nič izbranega. Dodajte sisteme ali kategorije pijač.</p>
+      <a href="#kontakt" class="btn btn--lime btn--wide js-close-basket"><span data-i18n="basket.cta">Nadaljuj na povpraševanje</span><i>→</i></a>
+    </div>
+  </aside>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="i18n.js?v=14"></script>
+  <script src="app.js?v=14"></script>
+</body>
+</html>
